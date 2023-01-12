@@ -15,7 +15,7 @@ public class Code01_MergeSort {
 	// T(N) = 2 * T(N / 2) + O(N)
 	// O(N * logN)
 	public static void process(int[] arr, int L, int R) {
-		if (L == R) { // base case
+		if (L >= R) { // base case
 			return;
 		}
 		int mid = L + ((R - L) >> 1);
@@ -23,7 +23,6 @@ public class Code01_MergeSort {
 		process(arr, mid + 1, R);
 		merge(arr, L, mid, R);
 	}
-
 	public static void merge(int[] arr, int L, int M, int R) {
 		int[] help = new int[R - L + 1];
 		int i = 0;
