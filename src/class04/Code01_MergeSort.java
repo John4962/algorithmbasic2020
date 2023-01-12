@@ -29,13 +29,15 @@ public class Code01_MergeSort {
 		int i = 0;
 		int p1 = L;
 		int p2 = M + 1;
+		// p1,p2都没有越界.
 		while (p1 <= M && p2 <= R) {
 			help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
 		}
-		// 要么p1越界了，要么p2越界了
+		// p2越界了
 		while (p1 <= M) {
 			help[i++] = arr[p1++];
 		}
+		// p1越界了
 		while (p2 <= R) {
 			help[i++] = arr[p2++];
 		}

@@ -35,9 +35,12 @@ public class Code02_SmallSum {
 		int p2 = m + 1;
 		int res = 0;
 		while (p1 <= m && p2 <= r) {
+			// 左右两侧都未超限, 右侧数据大于左侧数据,才会产生小和.即左侧数据小于右侧数据才会有小和.
+			// 比arr[p1]大的,会产生 r - p2 + 1 个数目的小和. 总体的和再乘以此时p1所指的值.即是小和
 			res += arr[p1] < arr[p2] ? (r - p2 + 1) * arr[p1] : 0;
 			help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
 		}
+		// 因为左侧或是右侧超限的,不计入小和.
 		while (p1 <= m) {
 			help[i++] = arr[p1++];
 		}

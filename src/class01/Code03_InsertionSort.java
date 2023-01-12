@@ -8,8 +8,16 @@ public class Code03_InsertionSort {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		// 不只1个数
-		for (int i = 1; i < arr.length; i++) { // 0 ~ i 做到有序
+		// 0 - 0 范围内做到有序 (已完成)
+		// 0 - 1 范围内做到有序  if(a[0] > a[1]) swap
+		// 0 - 2 范围内做到有序  if(a[1] > a[2])  swap  if(a[0] > a[1])  swap
+		// 0 - i 范围内做到有序  if(a[i-1]) > if(a[i]) swap
+		// 0 - n-1 范围内做到有序
+		for (int i = 1; i < arr.length; i++) {
+			// 0 ~ i 做到有序 0到i-1已经有序.
+			// [0 , 1 , 2 ... i-1] , i
+			//                 ↑     ↑
+			//                 j    j+1
 			for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
 				swap(arr, j, j + 1);
 			}
