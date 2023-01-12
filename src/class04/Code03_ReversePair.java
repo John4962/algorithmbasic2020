@@ -21,8 +21,34 @@ public class Code03_ReversePair {
 		int mid = l + ((r - l) >> 1);
 		return process(arr, l, mid) + process(arr, mid + 1, r) + merge(arr, l, mid, r);
 	}
+	/**
+	 * @author : 王明星
+	 * @date : 2023/1/12 16:39
+	 */
+	public static int merge(int[] arr, int l, int m, int r) {
+		int[] help = new int[r - l + 1];
+		// p指向左侧数组 , q指向右侧数组 . k指向辅助数组.
+		int p = l, q = m + 1, k = 0;
+		int sum = 0;
+		while (p <= m && q <= r) {
+			sum += arr[p] > arr[q] ? m - p + 1 : 0;
+			help[k++] = arr[p] <= arr[q] ? arr[p++] : arr[q++];
+		}
+		while (p <= m) {
+			help[k++] = arr[p++];
 
-	public static int merge(int[] arr, int L, int m, int r) {
+		}
+		while (q <= r) {
+			help[k++] = arr[q++];
+
+		}
+		for (int i = 0; i < help.length; i++) {
+			arr[i + l] = help[i];
+		}
+		return sum;
+	}
+
+/*	public static int merge(int[] arr, int L, int m, int r) {
 		int[] help = new int[r - L + 1];
 		int i = help.length - 1;
 		int p1 = m;
@@ -42,7 +68,7 @@ public class Code03_ReversePair {
 			arr[L + i] = help[i];
 		}
 		return res;
-	}
+	}*/
 
 	// for test
 	public static int comparator(int[] arr) {
