@@ -36,11 +36,9 @@ public class Code03_ReversePair {
 		}
 		while (p <= m) {
 			help[k++] = arr[p++];
-
 		}
 		while (q <= r) {
 			help[k++] = arr[q++];
-
 		}
 		for (int i = 0; i < help.length; i++) {
 			arr[i + l] = help[i];
