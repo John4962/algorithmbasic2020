@@ -49,8 +49,8 @@ public class Code03_UnRecursiveTraversalBT {
 			}
 		}
 		System.out.println();
-	}
 
+}
 	public static void pos1(Node head) {
 		System.out.print("pos-order: ");
 		if (head != null) {
@@ -58,8 +58,10 @@ public class Code03_UnRecursiveTraversalBT {
 			Stack<Node> s2 = new Stack<Node>();
 			s1.push(head);
 			while (!s1.isEmpty()) {
-				head = s1.pop(); // 头 右 左
+				head = s1.pop();
 				s2.push(head);
+				// s1 进栈 左右 出栈 右左
+				// s2 入栈 根 右 左 出栈 左右根
 				if (head.left != null) {
 					s1.push(head.left);
 				}
