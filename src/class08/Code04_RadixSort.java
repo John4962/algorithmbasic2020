@@ -11,7 +11,9 @@ public class Code04_RadixSort {
 		}
 		radixSort(arr, 0, arr.length - 1, maxbits(arr));
 	}
-
+	/**
+	 * 获取数字最大位数. 如134,3位 1832,4位
+	 */
 	public static int maxbits(int[] arr) {
 		int max = Integer.MIN_VALUE;
 		for (int i = 0; i < arr.length; i++) {
@@ -39,14 +41,16 @@ public class Code04_RadixSort {
 			// count[i] 当前位(d位)是(0~i)的数字有多少个
 			int[] count = new int[radix]; // count[0..9]
 			for (i = L; i <= R; i++) {
-				// 103  1   3
-				// 209  1   9
+				// 103  index 1   res 3
+				// 209  index 1   res 9
 				j = getDigit(arr[i], d);
 				count[j]++;
 			}
+			// 算出前缀和. sum(n) = sum(n-1) +a(n)
 			for (i = 1; i < radix; i++) {
 				count[i] = count[i] + count[i - 1];
 			}
+			// 前缀和意义, 小于
 			for (i = R; i >= L; i--) {
 				j = getDigit(arr[i], d);
 				help[count[j] - 1] = arr[i];
