@@ -45,9 +45,11 @@ public class Code02_TrieTree {
 				if (node.nexts[path] == null) {
 					node.nexts[path] = new Node1();
 				}
+				// node 赋值为子node, 继续向下找
 				node = node.nexts[path];
 				node.pass++;
 			}
+			// 字符串遍历完, 最后一个节点end++
 			node.end++;
 		}
 

@@ -12,8 +12,8 @@ public class Code04_SortArrayDistanceLessK {
 		// 默认小根堆
 		PriorityQueue<Integer> heap = new PriorityQueue<>();
 		int index = 0;
-		// 0...K-1
-		for (; index <= Math.min(arr.length - 1, k - 1); index++) {
+		// 0...K   最大k+1 个数,这里存k个.下面的循环添加一个弹一个.
+		for (; index <= Math.min(arr.length - 1, k ); index++) {
 			heap.add(arr[index]);
 		}
 		int i = 0;
